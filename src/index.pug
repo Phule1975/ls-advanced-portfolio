@@ -14,11 +14,25 @@ html(lang="en")
           .container.hero__container
             header.header
               .header__logo
-                a.logo(href="") ЕГ
+                a.logo(href="") ЕШ
               .header__menu
                 nav.menu
                   ul.menu__list
-                    - var menuItems = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+                    - var menuItems = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"];
                     each item in menuItems
                       li.menu__item
                         a(href="#").menu__link #{item}
+              .header__buttons
+                ul.socials
+                  - var socials = ["insta", "vk", "github"];
+                  each item in socials
+                    li.socials__item
+                      a(href="#").socials__link
+                        +icon(item, "socials__icon")
+            .hero__content
+              .user-info
+                .user-info__title Личный сайт веб разработчика
+                .user-info__name Евгений Шелешков
+            .hero__downbutton
+              .scroll-down
+                a(href="").scroll-down__btn Скролл
