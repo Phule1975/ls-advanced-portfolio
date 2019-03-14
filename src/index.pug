@@ -44,3 +44,23 @@ html(lang="en")
                   .user__avatar
                     .user__avatar-wrapper
                       +image("content/user.jpg", "user__avatar-pic")
+                  .user__about
+                    -
+                      var userinfo = [
+                        ["Проживаю:", "Санкт-Петрбург"],
+                        ["Возраст:", "43 года"],
+                        ["Родился:", "5 сентября 1975"],
+                      ];
+                    table.user__table
+                      each item in userinfo
+                        tr
+                          td.user__table-title #{item[0]}
+                          td.user__table-content #{item[1]}
+              .about__user-text
+                .about__main-text-content
+                  .about__desc Привет, меня завут
+                  .about__title Евгений Шелешков
+                  .about__text-info
+                    p Я занимаюсь разработкой современных сайтов и приложений
+                .about__ps
+                  | Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
