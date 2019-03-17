@@ -1,0 +1,49 @@
+.advantage {
+  margin-bottom: 149px;
+}
+
+.advantage__container {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    background: url('~images/content/bag.jpg') left bottom / contain no-repeat;
+    display: block;
+    bottom: 5%;
+    height: 79%;
+    width: 100%;
+    left: -9%;
+  }
+}
+
+.advantage__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.advantage__description {
+    width: 40%;
+    margin: 0 auto;
+    margin-bottom: 82px;
+}
+
+.advantage__title {
+    margin-bottom: 52px;
+}
+
+.advantage__content {
+  color: rgba($text-color, .5);
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.advantage__widget {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.advantage__widget-container {
+  width: 58%;
+}
