@@ -2,4 +2,8 @@ node_modules
 .DS_Store
 .vscode
 .idea
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b31cdd4a3840f5deb98ff00cc9f28097bdf850e
 *.log
