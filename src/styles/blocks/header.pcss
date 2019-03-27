@@ -4,8 +4,14 @@
 }
 
 .header__menu {
-flex: 1;
-@include tablets() {
-  display: none;
+  flex: 1;
+  @include tablets {
+    display: none;
+  }
 }
+
+.header__button {
+  @include phones {
+    display: none;
+  }
 }

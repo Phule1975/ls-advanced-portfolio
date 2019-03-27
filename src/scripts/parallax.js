@@ -5,7 +5,7 @@ const layersToExclude = [0, 4, 6];
 
 function moveLayersOnScroll(wscroll) {
   Array.from(layers).forEach((layer, layerIndex) => {
-    const strafe = `${wscroll / (-layerIndex * 40)}%`;
+    const strafe = `${wscroll / (-layerIndex * 50)}%`;
     if (layersToExclude.includes(layerIndex) === false) {
       layer.style.transform = `translateY(${strafe})`;
     }
