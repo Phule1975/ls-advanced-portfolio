@@ -15,6 +15,8 @@ html(lang="en")
             - for (var i=1; i<=7; i++)
               .parallax__layer
                 picture
+                  source(srcset=require(`images/parallax/${i}_2560.${i === 1 ? 'jpg' : 'png'}`) media="(min-width: 1920px)").parallax__image
+                  img(srcset=require(`images/parallax/${i}.${i === 1 ? 'jpg' : 'png'}`)).parallax__image
           section.fullscreen-section.hero
             .container.hero__container
               header.header
