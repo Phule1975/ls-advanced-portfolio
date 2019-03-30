@@ -118,16 +118,16 @@ html(lang="en")
         section.contacts
           .container.contacts__container
             .contacts__about
-                .reviews
+                .reviews#reviews
                   .reviews__header
                     .reviews__title.title-section Что обо мне говорят
                     .reviews__buttons
-                      button(type="button" @click="slide('prev')").reviews__btn.reviews__btn_prev
-                      button(type="button" @click="slide('next')").reviews__btn.reviews__btn_next
+                      button(type="button" @click="previous()").reviews__btn.reviews__btn_prev
+                      button(type="button" @click="next()").reviews__btn.reviews__btn_next
                   .reviews__content
-                    ul.reviews__content-wrapper
+                    flickity(ref="flickity" :options="flickityOptions").reviews__content-wrapper
                       - for (var i=0; i<3; i++)
-                        li.reviews__content-item
+                        .reviews__content-item.carousel-cell
                           .quote
                             .quote__text
                               p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
