@@ -1,16 +1,20 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between
 }
 
 .header__menu {
-  flex: 1;
+  //flex: 1;
   @include tablets {
     display: none;
   }
 }
 
 .header__button {
+  @include tablets {
+    margin-left: auto;
+  }
   @include phones {
     display: none;
   }

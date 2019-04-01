@@ -56,6 +56,16 @@
   margin: 0 70px;
   flex-shrink: 0;
   margin-bottom: 70px;
+  @include tablets {
+    margin: 0;
+    margin-bottom: 60px;
+    width: 170px;
+    height: 170px;
+  }
+    @include phones {
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
 
   &-pic {
     height: 100%;
@@ -70,6 +80,9 @@
 
   td {
     padding-bottom: 15px;
+    @include tablets {
+      padding-bottom: 10px;
+    }
   }
 
   tr:last-child td {
@@ -80,6 +93,15 @@
 .user__table-title {
   color: rgba($text-color, .3);
   width: 48%;
+  @include desktop {
+    width: 44%; 
+  }
+  @include tablets {
+    width: 47%; 
+  }
+    @include phones {
+    width: 50%; 
+  }
 }
 
 .user-review {
