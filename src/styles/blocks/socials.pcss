@@ -1,5 +1,8 @@
 .socials {
   display: flex;
+  @include phones {
+    display: none;//0204
+  }
   &--round-borders {
     .socials__item {
       width: 50px;
