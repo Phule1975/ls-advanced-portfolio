@@ -1,6 +1,8 @@
 script(type="text/x-template")#slider-container
   .works-slider
-    display
+    display(
+      :works="works"
+    ) 
     info
     
 
@@ -9,7 +11,9 @@ script(type="text/x-template")#slider-display
     .works-slider__fullpic-container
       +image('content/work-1.jpg', 'works-slider__fullpic')
       btns
-      thumbs
+      thumbs(
+        :works="works"
+      )
     
 
 script(type="text/x-template")#slider-btns
