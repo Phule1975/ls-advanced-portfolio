@@ -17,7 +17,8 @@ const display = {
     btns, thumbs
   },
   props: {
-    works: Array
+    works: Array,
+    currentWork: Object
   }
 };
 
@@ -27,9 +28,11 @@ const tags = {
 
 const info = {
   template: "#slider-info",
-  omponents: {
+  components: {
     tags
-  }
+  },
+  props: {
+    currentWork: Object}
 };
 
 new Vue ({
@@ -41,11 +44,28 @@ new Vue ({
   },
   data() {
     return {
-      works: []
-    }
+      works: [],
+      currentWork: {},
+      currentIndex: 0 //1:37:57
+    };
   },
+  methods: {
+    makeArrWithRequiredImages(data) {
+      return data.map(item => {
+        const requiredPic = require(`../images/content/${item.photo}`);
+        item.photo = requiredPic;
+        return item;
+      })
+    },
+    handleSlide(derection) {
+      
+    } 
+  },
+
   created () {
     const data = require("../data/works.json");
-    this.works = data;
+    this.works = this.makeArrWithRequiredImages(data);
+
+    this.currentWork = this.works[0];
   }
 });

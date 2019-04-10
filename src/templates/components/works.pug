@@ -1,16 +1,22 @@
 script(type="text/x-template")#slider-container
   .works-slider
     display(
-      :works="works"
+      :works="works",
+      :currentWork="currentWork"
+      @slide="handleSlide"
     ) 
-    info
+    info(
+      :currentWork="currentWork"
+    )
     
 
 script(type="text/x-template")#slider-display
-  .works-slider__pics(data-slide="3")                  
+  .works-slider__pics(data-slide="1")                  
     .works-slider__fullpic-container
-      +image('content/work-1.jpg', 'works-slider__fullpic')
-      btns
+      img(:src="currentWork.photo").works-slider__fullpic
+      btns(
+        @slide="derection => $emit('slide', derection)"
+      ) 
       thumbs(
         :works="works"
       )
@@ -18,26 +24,24 @@ script(type="text/x-template")#slider-display
 
 script(type="text/x-template")#slider-btns
   .works-slider__buttons
-    a(href="#").works-slider__btn.works-slider__btn_next
-    a(href="#").works-slider__btn.works-slider__btn_prev
+    a(href="#" @click.prevent="$emit('slide', 'next')").works-slider__btn.works-slider__btn_next
+    a(href="#" @click.prevent="$emit('slide', 'prev')").works-slider__btn.works-slider__btn_prev
 
 script(type="text/x-template")#slider-thumbs
   ul.works-slider__thumbs
-    - var thumbs__item = ["work-1.jpg", "work-2.jpg", "work-3.jpg", "work-4.jpg"];
-    each thumb in thumbs__item 
-      li.works-slider__thumb-item
-        a.works-slider__thumb-link
-          +image(`content/${thumb}`, 'works-slider__thumb')
+    li.works-slider__thumb-item(v-for="work in works" :key="work.id")
+      a.works-slider__thumb-link
+        img(:src="work.photo" alt="").works-slider__thumb
 
 
 script(type="text/x-template")#slider-info
   .works-slider__data
     tags
-    .works-slider__title.title-section.title-section_middle Сайт школы онлайн образования
+    .works-slider__title.title-section.title-section_middle {{currentWork.title}}
     .works-slider__desc
-      p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+      p {{currentWork.desc}}
     .works-slider__link
-      a(href="").iconed-link Посмотреть сайт
+      a(:href="currentWork.link").iconed-link Посмотреть сайт
 
 script(type="text/x-template")#slider-tags
   ul.tags
