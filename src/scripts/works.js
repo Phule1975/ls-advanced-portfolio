@@ -45,9 +45,13 @@ new Vue ({
   data() {
     return {
       works: [],
-      currentWork: {},
       currentIndex: 0 //1:37:57
     };
+  },
+  computed: {
+    currentWork() {
+      return this.works[this.currentIndex];
+    }
   },
   methods: {
     makeArrWithRequiredImages(data) {
@@ -58,7 +62,14 @@ new Vue ({
       })
     },
     handleSlide(derection) {
-      
+      switch(derection) {
+        case "next" :
+          this.currentIndex++;
+          break;
+        case "prev" :
+          this.currentIndex--;
+          break;//1:40
+      }
     } 
   },
 
@@ -66,6 +77,5 @@ new Vue ({
     const data = require("../data/works.json");
     this.works = this.makeArrWithRequiredImages(data);
 
-    this.currentWork = this.works[0];
   }
 });
