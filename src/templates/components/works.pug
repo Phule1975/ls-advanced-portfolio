@@ -3,6 +3,7 @@ script(type="text/x-template")#slider-container
     display(
       :works="works",
       :currentWork="currentWork"
+      :currentIndex="currentIndex"
       @slide="handleSlide"
     ) 
     info(
@@ -11,14 +12,15 @@ script(type="text/x-template")#slider-container
     
 
 script(type="text/x-template")#slider-display
-  .works-slider__pics(data-slide="1")                  
+  .works-slider__pics(:data-slide="currentIndex + 1")                  
     .works-slider__fullpic-container
       img(:src="currentWork.photo").works-slider__fullpic
       btns(
         @slide="derection => $emit('slide', derection)"
       ) 
       thumbs(
-        :works="works"
+        :works="reversedWorks"
+        :currentWork="currentWork"
       )
     
 
@@ -29,14 +31,19 @@ script(type="text/x-template")#slider-btns
 
 script(type="text/x-template")#slider-thumbs
   ul.works-slider__thumbs
-    li.works-slider__thumb-item(v-for="work in works" :key="work.id")
+    li.works-slider__thumb-item(
+      v-for="work in works" :key="work.id"
+      :class="{active: currentWork.id === work.id}"
+    )
       a.works-slider__thumb-link
         img(:src="work.photo" alt="").works-slider__thumb
 
 
 script(type="text/x-template")#slider-info
   .works-slider__data
-    tags
+    tags(
+      :tagsArray="tagsArray"
+    )
     .works-slider__title.title-section.title-section_middle {{currentWork.title}}
     .works-slider__desc
       p {{currentWork.desc}}
@@ -45,7 +52,5 @@ script(type="text/x-template")#slider-info
 
 script(type="text/x-template")#slider-tags
   ul.tags
-    - var tags__item = ["Html", "Css", "JavaScript"];
-    each tag in tags__item 
-      li.tags-item
-        .tag #{tag}
+    li.tags-item(v-for="tag in tagsArray")
+      .tag {{tag}}

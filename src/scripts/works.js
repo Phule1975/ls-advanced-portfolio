@@ -3,7 +3,8 @@ import Vue from "vue";
 const thumbs = {
   template: "#slider-thumbs",
   props: {
-    works: Array //1:17:27
+    works: Array,
+    currentWork: Object
   }
 };
 
@@ -14,16 +15,27 @@ const btns = {
 const display = {
   template: "#slider-display",
   components: {
-    btns, thumbs
+    btns,
+    thumbs
   },
   props: {
     works: Array,
-    currentWork: Object
+    currentWork: Object,
+    currentIndex: Number
+  },
+  computed: {
+    reversedWorks() {
+      const works = [...this.works];
+      return works.reverse();
+    }
   }
 };
 
 const tags = {
-  template: "#slider-tags"
+  template: "#slider-tags",
+  props: {
+    tagsArray: Array
+  }
 };
 
 const info = {
@@ -32,7 +44,13 @@ const info = {
     tags
   },
   props: {
-    currentWork: Object}
+    currentWork: Object
+  },
+  computed: {
+    tagsArray() {
+      return this.currentWork.skills.split(',');
+    }
+  }
 };
 
 new Vue ({
@@ -45,7 +63,7 @@ new Vue ({
   data() {
     return {
       works: [],
-      currentIndex: 0 //1:37:57
+      currentIndex: 0
     };
   },
   computed: {
@@ -53,7 +71,17 @@ new Vue ({
       return this.works[this.currentIndex];
     }
   },
+  watch: {
+    currentIndex(value) {
+      this.makeInfiniteLoopForCurIndex(value);
+    }
+  },
   methods: {
+    makeInfiniteLoopForCurIndex(value) {
+      const worksAmount = this.works.length - 1;
+      if (value > worksAmount) this.currentIndex = 0;
+      if (value < 0) this.currentIndex = worksAmount;
+    },
     makeArrWithRequiredImages(data) {
       return data.map(item => {
         const requiredPic = require(`../images/content/${item.photo}`);
