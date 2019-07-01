@@ -5,6 +5,12 @@
   grid-template-rows: max-content;
   grid-template-areas: 'left name'
                        'left desc';
+  @include desktop {
+    grid-template-columns: 60%;
+    grid-template-areas: 'left'
+                         'name'
+                         'desc';
+  }
 }
 .copyright-year {
   font-weight: 600;

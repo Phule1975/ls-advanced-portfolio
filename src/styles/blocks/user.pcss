@@ -1,5 +1,14 @@
 .user-info {
   text-align: center;
+  @include desktop {
+    display: flex;
+    text-align: left;
+  }
+  @include tablets {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 .user-info__title {
@@ -8,12 +17,32 @@
   color: rgba($text-color, .4);
   font-weight: 600;
   margin-bottom: 20px;
+  @include desktop {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 8px;
+    margin-right: 5%;
+  }
+  @include tablets {
+    text-align: center;
+    margin-right: 0;
+  }
+  @include phones {
+    font-size: 14px;
+    padding: 0 10%;
+  }
 }
 
 .user-info__name {
   font-weight: 800;
   font-size: 72px;
-  line-height: 60px;
+  line-height: 1;
+  @include tablets{
+    font-size: 48px; //0204
+  }
+  @include phones {
+    font-size: 36px;
+  }
 }
 
 .user-info__occ {
@@ -30,6 +59,16 @@
   margin: 0 70px;
   flex-shrink: 0;
   margin-bottom: 70px;
+  @include tablets {
+    margin: 0;
+    margin-bottom: 60px;
+    width: 170px;
+    height: 170px;
+  }
+    @include phones {
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
 
   &-pic {
     height: 100%;
@@ -44,6 +83,9 @@
 
   td {
     padding-bottom: 15px;
+    @include tablets {
+      padding-bottom: 10px;
+    }
   }
 
   tr:last-child td {
@@ -54,6 +96,15 @@
 .user__table-title {
   color: rgba($text-color, .3);
   width: 48%;
+  @include desktop {
+    width: 44%; 
+  }
+  @include tablets {
+    width: 47%; 
+  }
+    @include phones {
+    width: 50%; 
+  }
 }
 
 .user-review {
