@@ -3,6 +3,9 @@
   border-bottom: 1px solid currentColor;
   padding-bottom: 14px;
   flex: 1;
+  @include tablets {
+    font-size: 14px;
+  }
   &:last-child {
     margin-right: 0;
   }
@@ -53,10 +56,13 @@
   }
 
   &:focus::placeholder{
-      color: transparent;
+    color: transparent;
   }
 }
 .form-block__textarea{
-        line-height: 36px;
-    resize: none;
+  line-height: 36px;
+  resize: none;
+  @include tablets {
+    line-height: 20px;
+  }
 } 

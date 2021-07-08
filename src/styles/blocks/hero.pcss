@@ -1,5 +1,5 @@
 .hero {
-  padding-top: 54px;
+  padding-top: 16px;
   position: relative;
 }
 
@@ -10,11 +10,22 @@
 }
 
 .hero__content {
-  flex: 0.95;
+  flex: 0.90;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 24%;
+  @include desktop {
+    flex: 0.75;
+  }
+
+  @include tablets {
+    flex: 0.9;
+  }
+
+  @include phones {
+    flex: 0.8;
+  }
 }
 
 .hero__downbutton {
@@ -22,4 +33,12 @@
   margin-bottom: 6%;
   display: flex;
   justify-content: center;
+  @include desktop {
+    margin-top: inherit;
+    margin-bottom: 8%;
+  }
+
+  @include tablets {
+    display: none;
+  }
 }

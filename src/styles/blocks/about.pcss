@@ -1,11 +1,25 @@
 .about {
   position: relative;
+  height: 70vh;
+  @include desktop {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .about__columns {
   display: flex;
-  padding: 50px 17% 265px;
+  padding: 115px 17% 265px;
   justify-content: space-between;
+  @include desktop {
+    margin-bottom: 5%;
+    padding: 0;
+  }
+  @include phones {
+    flex-direction: column;
+    padding: 40px;
+    padding-bottom: 93px;
+  }
 }
 
 .about__right {
@@ -14,10 +28,19 @@
   flex-direction: column;
   justify-content: space-between;
   width: 56%;
+  @include tablets {
+    font-size: 14px;
+  }
+  @include phones {
+    width: 100%;
+  }
 }
 
 .about__left {
   width: 36%;
+  @include phones {
+    margin-bottom: 10px;
+  }
 }
 
 .about__desc {
@@ -32,10 +55,16 @@
 
 .about__text-info{
   line-height: 30px;
+  @include phones {
+    margin-bottom: 48px;
+  }
 }
 
 .about__ps {
   line-height: 30px;
   font-style: italic;
   margin-bottom: 20px;
+  @include tablets {
+    margin-bottom: 0;
+  }
 }

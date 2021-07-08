@@ -3,20 +3,55 @@
   padding-top: 245px;
   padding-bottom: 135px;
 	clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 50% 6%);
+  @include desktop {
+    padding-top: 190px;
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 50% 4%);
+    padding-bottom: 165px;
+  }
+  @include tablets {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, 50% 3%);
+    padding-bottom: 110px;
+  }
+  @include phones {
+    padding-top: 170px;
+  }
 }
 
 .contacts__form-title {
     margin-bottom: 80px;
+    @include tablets {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 }
 
 .contacts__about {
   margin-bottom: 130px;
+  @include desktop {
+    margin-bottom: 190px;
+  }
+  @include tablets {
+    margin-bottom: 120px;
+  }
+  @include phones {
+    margin-bottom: 150px;
+  }
 }
 
 .contacts__container {
   padding-right: 26%;
+  @include desktop {
+    padding-right: 9%;
+  }
+  @include tablets {
+    padding-right: 0;
+  }
+
 }
 
 .contacts__form {
   width: 89%;
+  @include tablets {
+    width: 100%;
+  }
 }

@@ -11,6 +11,12 @@ html(lang="en")
     .wrapper
       .maincontent
         .welcome-section
+          section.parallax
+            - for (var i=1; i<=7; i++)
+              .parallax__layer
+                picture
+                  source(srcset=require(`images/parallax/${i}_2560.${i === 1 ? 'jpg' : 'png'}`) media="(min-width: 1920px)").parallax__image
+                  img(srcset=require(`images/parallax/${i}.${i === 1 ? 'jpg' : 'png'}`)).parallax__image
           section.fullscreen-section.hero
             .container.hero__container
               header.header
@@ -30,6 +36,8 @@ html(lang="en")
                       li.socials__item
                         a(href="#").socials__link
                           +icon(item, 'socials__icon')
+                .hamburger-menu-link#hamburger-menu-link
+                  .hamburger-menu-link__bars
               .hero__content
                 .user-info
                   .user-info__title Личный сайт #[span.user-info__occ веб разработчика]
@@ -73,30 +81,8 @@ html(lang="en")
                     .advantage__content
                       p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
                 .advantage__widget
-                  .advantage__widget-container
-                    svg
-                      linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0")
-                        stop(offset="0%" stop-color="#5500f2")
-                        stop(offset="100%" stop-color="#8f00ef")
-                    ul.skills
-                      - 
-                        var skills__item = [
-                          ['Frontend', ['HTML5','CSS3','Javascript', 'Jquery и Vue.js']], 
-                          ['Workflow', ['GIT','Terminal','Gulp','Webpack']]
-                        ]
-                      each item in skills__item 
-                        li.skills__item
-                          div.skills-row
-                            .skills-row__title #{item[0]}
-                            ul.skills-row__list
-                              each skill in item[1]
-                                li.skills-row__item
-                                  .skill
-                                      svg(viewBox="0 0 100 100").skill__circle-shape
-                                        circle(cx="50" cy="50" r="40").skill__circle.skill__circle_under
-                                        circle(cx="50" cy="50" r="40" ref="color-circle" stroke="url(#gradient)" transform='rotate(180 50 50)').skill__circle.skill__circle_above
-                                        
-                                      .skill__circle-text #{skill}
+                  #skills-component
+                  
                   
           section.works
             .container.works__container
@@ -132,16 +118,16 @@ html(lang="en")
         section.contacts
           .container.contacts__container
             .contacts__about
-                .reviews
+                .reviews#reviews
                   .reviews__header
                     .reviews__title.title-section Что обо мне говорят
                     .reviews__buttons
-                      button(type="button" @click="slide('prev')").reviews__btn.reviews__btn_prev
-                      button(type="button" @click="slide('next')").reviews__btn.reviews__btn_next
+                      button(type="button" @click="previous()").reviews__btn.reviews__btn_prev
+                      button(type="button" @click="next()").reviews__btn.reviews__btn_next
                   .reviews__content
-                    ul.reviews__content-wrapper
+                    flickity(ref="flickity" :options="flickityOptions").reviews__content-wrapper
                       - for (var i=0; i<3; i++)
-                        li.reviews__content-item
+                        .reviews__content-item.carousel-cell
                           .quote
                             .quote__text
                               p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
@@ -207,3 +193,4 @@ html(lang="en")
                   .text-quote__text
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
                   .text-quote__author Martin Golding
+    include ./templates/entry.pug                
